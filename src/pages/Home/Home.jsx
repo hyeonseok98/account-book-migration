@@ -1,5 +1,5 @@
-import AddSpending from "../../components/AddSpending";
-import MonthlySpending from "../../components/MonthlySpending";
+import AddSpending from "../../components/AddSpending/AddSpending";
+import MonthlySpending from "../../components/MonthlySpending/MonthlySpending";
 import SpendingGraph from "../../components/SpendingGraph";
 import SpendingLists from "../../components/SpendingLists/SpendingLists";
 

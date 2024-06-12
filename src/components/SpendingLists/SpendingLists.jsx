@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import SpendingDetail from "../SpendingDetail/SpendingDetail";
+import SpendingDetail from "./../SpendingDetail/SpendingDetail";
 
 export default function SpendingLists() {
   const navigate = useNavigate();
