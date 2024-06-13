@@ -1,17 +1,17 @@
-import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { setSelectedMonth } from "../../redux/slices/spending.slice";
+import spendingStore from "../../stores/spendingStore";
 
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 export default function MonthlySpending() {
-  const dispatch = useDispatch();
-  const selectedMonth = useSelector((state) => state.spendings.selectedMonth);
+  const { setSelectedMonth } = spendingStore();
+
+  const selectedMonth = spendingStore((state) => state.selectedMonth);
 
   const handleChangeMonth = (month) => {
     localStorage.setItem("selectedMonth", month);
 
-    dispatch(setSelectedMonth(month));
+    setSelectedMonth(month);
   };
 
   return (

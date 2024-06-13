@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { login } from "../../api/auth.api";
 import { Input } from "../../components/Commons/Input";
+import userInfoStore from "../../stores/userInfoStore";
 import authValidation from "../../utils/authValidation";
 
 function Login() {
   const navigate = useNavigate();
+  const { setUserInfo } = userInfoStore();
   const idRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -16,9 +18,19 @@ function Login() {
     const password = passwordRef.current.value.trim();
 
     if (authValidation(id, password)) {
-      const data = await login({ id, password });
-      // await login({ id, password });
-      console.log(data);
+      const { accessToken, userId, nickname, avatar, success } = await login({
+        id,
+        password,
+      });
+      setUserInfo({
+        accessToken: accessToken,
+        id: userId,
+        nickname: nickname,
+        avatar: avatar,
+        success: success,
+      });
+
+      alert("로그인 되었습니다");
       idRef.current.value = "";
       passwordRef.current.value = "";
       navigate("/");

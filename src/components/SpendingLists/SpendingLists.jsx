@@ -1,16 +1,34 @@
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useSpendings } from "../../hooks/useSpendings";
+import spendingStore from "../../stores/spendingStore";
+import userInfoStore from "../../stores/userInfoStore";
 import SpendingDetail from "./../SpendingDetail/SpendingDetail";
 
 export default function SpendingLists() {
   const navigate = useNavigate();
-  const spendingLists = useSelector((state) => state.spendings.spendingLists);
-  const selectedMonth = useSelector((state) => state.spendings.selectedMonth);
+  const selectedMonth = spendingStore((state) => state.selectedMonth);
+  const { data: spendingLists, isLoading, isError } = useSpendings();
+  const nickname = userInfoStore((state) => state.userInfo.nickname);
 
-  const handleMoveDetailPage = (id) => {
-    navigate(`/spending/${id}`);
+  const handleMoveDetailPage = (id, createdBy) => {
+    nickname === createdBy
+      ? navigate(`/spendings/${id}`)
+      : alert("본인의 지출만 수정할 수 있습니다");
   };
+
+  if (isLoading) {
+    return <div>로딩중입니다...</div>;
+  }
+
+  if (!spendingLists) {
+    return <div>지출 내역이 없습니다.</div>;
+  }
+
+  if (isError) {
+    return <div>데이터 조회 중 오류가 발생했습니다.</div>;
+  }
+
   const monthlySpendingLists = spendingLists.filter(
     (list) => selectedMonth === Number(list.date.slice(5, 7))
   );
@@ -24,7 +42,9 @@ export default function SpendingLists() {
           monthlySpendingLists.map((itemInfo) => (
             <li
               key={itemInfo.id}
-              onClick={() => handleMoveDetailPage(itemInfo.id)}
+              onClick={() =>
+                handleMoveDetailPage(itemInfo.id, itemInfo.createdBy)
+              }
             >
               <SpendingDetail itemInfo={itemInfo} />
             </li>

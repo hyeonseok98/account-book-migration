@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export default function SpendingDetail({ itemInfo }) {
-  const { date, item, amount, description } = itemInfo;
+  const { date, item, amount, description, createdBy } = itemInfo;
+
   return (
     <>
       <ItemWrapper>
         <Date>{date}</Date>
-        <Description>{`${item} - ${description}`}</Description>
+        <Description>{`${item} - ${description} (by ${createdBy})`}</Description>
       </ItemWrapper>
       <Amount>{`${amount.toLocaleString()} 원`}</Amount>
     </>

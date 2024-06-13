@@ -1,13 +1,15 @@
 import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import { addSpending } from "../../redux/slices/spending.slice";
+import { useCreateSpending } from "../../hooks/useSpendings";
+import spendingStore from "../../stores/spendingStore";
 import { Input } from "../Commons/Input";
+import userInfoStore from "./../../stores/userInfoStore";
 
-export default function AddSpending() {
-  const dispatch = useDispatch();
-  const selectedMonth = useSelector((state) => state.spendings.selectedMonth);
+export default function AddSpendings() {
+  const addSpending = useCreateSpending();
+  const nickname = userInfoStore((state) => state.userInfo.nickname);
+  const selectedMonth = spendingStore((state) => state.selectedMonth);
 
   const paymentDateRef = useRef(null);
   const itemCategoryRef = useRef(null);
@@ -23,7 +25,6 @@ export default function AddSpending() {
             : `2024-0${selectedMonth}-01`;
       }
     };
-
     setInitialDate();
   }, [selectedMonth]);
 
@@ -38,15 +39,14 @@ export default function AddSpending() {
       return;
     }
 
-    dispatch(
-      addSpending({
-        id: uuidv4(),
-        date,
-        item,
-        amount,
-        description,
-      })
-    );
+    addSpending.mutate({
+      id: uuidv4(),
+      date,
+      item,
+      amount,
+      description,
+      createdBy: nickname,
+    });
 
     paymentDateRef.current.value =
       selectedMonth >= 10

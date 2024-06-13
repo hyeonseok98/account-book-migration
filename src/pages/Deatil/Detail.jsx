@@ -1,37 +1,61 @@
 import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Input } from "../../components/Commons/Input";
 import {
-  deleteSpending,
-  updateSpending,
-} from "../../redux/slices/spending.slice";
+  useDeleteSpending,
+  useSpendings,
+  useUpdateSpending,
+} from "../../hooks/useSpendings";
+import userInfoStore from "../../stores/userInfoStore";
+
+// const { nickname } = userInfoStore((state) => state.userInfo.nickname);
+// const [userValidation, setUserValidaton] = useState(false)
+
+// useEffect(() => {
+//   if(nickname === createdBy) setUserValidaton(true)
+// },[])
 
 export default function DetailPage() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+  const { data: spendingLists, isLoading, isError } = useSpendings();
+  const nickname = userInfoStore((state) => state.userInfo.nickname);
 
-  const spendingLists = useSelector((state) => state.spendings.spendingLists);
+  const updateSpending = useUpdateSpending();
+  const deleteSpending = useDeleteSpending();
 
   const paymentDateRef = useRef(null);
   const itemCategoryRef = useRef(null);
   const expenseAmountRef = useRef(null);
   const expenseDetailRef = useRef(null);
 
-  const filteredList = spendingLists.filter((spendingList) => {
-    return spendingList.id === id;
-  });
-
   useEffect(() => {
-    filteredList.forEach((detailItem) => {
-      paymentDateRef.current.value = detailItem.date;
-      itemCategoryRef.current.value = detailItem.item;
-      expenseAmountRef.current.value = detailItem.amount;
-      expenseDetailRef.current.value = detailItem.description;
-    });
-  }, [filteredList]);
+    if (spendingLists && spendingLists.length > 0) {
+      const filteredList = spendingLists.filter(
+        (spendingList) => spendingList.id === id
+      );
+
+      filteredList.forEach((detailItem) => {
+        paymentDateRef.current.value = detailItem.date;
+        itemCategoryRef.current.value = detailItem.item;
+        expenseAmountRef.current.value = detailItem.amount;
+        expenseDetailRef.current.value = detailItem.description;
+      });
+    }
+  }, [spendingLists, id]);
+
+  if (isLoading) {
+    return <div>로딩중입니다...</div>;
+  }
+
+  if (isError) {
+    return <div>데이터 조회 중 오류가 발생했습니다.</div>;
+  }
+
+  if (!spendingLists) {
+    return <div>지출 내역이 없습니다.</div>;
+  }
 
   const handleUpdateSpending = (e) => {
     e.preventDefault();
@@ -46,15 +70,17 @@ export default function DetailPage() {
       return;
     }
 
-    dispatch(
-      updateSpending({
+    updateSpending.mutate({
+      id,
+      newSpending: {
         id,
         date,
         item,
         amount,
         description,
-      })
-    );
+        createdBy: nickname,
+      },
+    });
 
     navigate("/");
   };
@@ -65,7 +91,7 @@ export default function DetailPage() {
     );
     if (!confirmDelete) return;
 
-    dispatch(deleteSpending(id));
+    deleteSpending.mutate(id);
     navigate("/");
   };
 
