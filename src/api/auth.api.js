@@ -1,11 +1,46 @@
 import axios from "axios";
+import userInfoStore from "../stores/userInfoStore";
 
 const AUTH_BASE_URL = "https://moneyfulpublicpolicy.co.kr";
 
 const authClient = axios.create({
   baseURL: AUTH_BASE_URL,
-  // withCredentials: true,
 });
+
+authClient.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+let isTokenExpired = false; // 중복 알림 방지용
+
+authClient.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const { clearUserInfo } = userInfoStore.getState();
+
+    if (error.response && error.response.status === 401) {
+      if (!isTokenExpired) {
+        isTokenExpired = true;
+        alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
+        clearUserInfo();
+        localStorage.removeItem("accessToken");
+        window.location.href = "/login";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const signUp = async ({ id, password, nickname }) => {
   try {
@@ -23,7 +58,7 @@ export const signUp = async ({ id, password, nickname }) => {
 
 export const login = async ({ id, password }) => {
   try {
-    const response = await authClient.post("/login", {
+    const response = await authClient.post("/login?expiresIn=30m", {
       id: id,
       password: password,
     });

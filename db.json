@@ -68,6 +68,14 @@
       "amount": 2000,
       "description": "아이스크림",
       "createdBy": "토심이2"
+    },
+    {
+      "id": "17790799-fd6c-45e4-a1ef-ec175736b003",
+      "date": "2024-01-01",
+      "item": "2",
+      "amount": 2,
+      "description": "2",
+      "createdBy": "토심이2"
     }
   ]
 }

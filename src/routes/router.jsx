@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layouts/Layout";
 import DetailPage from "../pages/Deatil/Detail";
-import ErrorPage from "../pages/Error/Error";
 import HomePage from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import MyPage from "../pages/MyPage/MyPage";
+import NotFoundPage from "../pages/NotFound/NotFound";
 import SignUp from "../pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       {
         path: "/spendings/:id",
         element: <DetailPage />,
-        errorElement: <ErrorPage />,
+        errorElement: <NotFoundPage />,
       },
       {
         path: "/login",
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/mypage",
         element: <MyPage />,
-        errorElement: <ErrorPage />,
+        errorElement: <NotFoundPage />,
       },
     ],
   },

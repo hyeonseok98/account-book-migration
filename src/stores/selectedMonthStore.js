@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const spendingStore = create((set) => ({
+const selectedMonthStore = create((set) => ({
   selectedMonth:
     parseInt(localStorage.getItem("selectedMonth"), 10) ||
     new Date().getMonth() + 1,
@@ -8,4 +8,4 @@ const spendingStore = create((set) => ({
   setSelectedMonth: (selectedMonth) => set({ selectedMonth }),
 }));
 
-export default spendingStore;
+export default selectedMonthStore;

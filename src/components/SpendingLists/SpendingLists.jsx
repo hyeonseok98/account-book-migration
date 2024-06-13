@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useSpendings } from "../../hooks/useSpendings";
-import spendingStore from "../../stores/spendingStore";
+import selectedMonthStore from "../../stores/selectedMonthStore";
 import userInfoStore from "../../stores/userInfoStore";
 import SpendingDetail from "./../SpendingDetail/SpendingDetail";
 
 export default function SpendingLists() {
   const navigate = useNavigate();
-  const selectedMonth = spendingStore((state) => state.selectedMonth);
+  const selectedMonth = selectedMonthStore((state) => state.selectedMonth);
   const { data: spendingLists, isLoading, isError } = useSpendings();
   const nickname = userInfoStore((state) => state.userInfo.nickname);
 

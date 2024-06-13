@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import spendingStore from "../../stores/spendingStore";
+import selectedMonthStore from "../../stores/selectedMonthStore";
 
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 export default function MonthlySpending() {
-  const { setSelectedMonth } = spendingStore();
+  const { setSelectedMonth } = selectedMonthStore();
 
-  const selectedMonth = spendingStore((state) => state.selectedMonth);
+  const selectedMonth = selectedMonthStore((state) => state.selectedMonth);
 
   const handleChangeMonth = (month) => {
     localStorage.setItem("selectedMonth", month);

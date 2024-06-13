@@ -2,14 +2,14 @@ import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { useCreateSpending } from "../../hooks/useSpendings";
-import spendingStore from "../../stores/spendingStore";
+import selectedMonthStore from "../../stores/selectedMonthStore";
 import { Input } from "../Commons/Input";
 import userInfoStore from "./../../stores/userInfoStore";
 
 export default function AddSpendings() {
   const addSpending = useCreateSpending();
   const nickname = userInfoStore((state) => state.userInfo.nickname);
-  const selectedMonth = spendingStore((state) => state.selectedMonth);
+  const selectedMonth = selectedMonthStore((state) => state.selectedMonth);
 
   const paymentDateRef = useRef(null);
   const itemCategoryRef = useRef(null);
