@@ -7,7 +7,8 @@
       "item": "개인사업",
       "amount": 1000000,
       "description": "테슬라 모델 3",
-      "createdBy": "Musk"
+      "createdBy": "Musk",
+      "userUuid": "3b241101-e2bb-4255-8caf-4136c566a962"
     },
     {
       "id": "a5c0d8de-d010-4d07-9934-29765051a7ea",
@@ -15,7 +16,8 @@
       "item": "개인사업",
       "amount": 1000,
       "description": "X(구 트위터)",
-      "createdBy": "Musk"
+      "createdBy": "Musk",
+      "userUuid": "3b241101-e2bb-4255-8caf-4136c566a962"
     },
     {
       "id": "0d0a966e-5c35-4bf0-aca4-f2b1265a432d",
@@ -23,7 +25,8 @@
       "item": "식비",
       "amount": 2500,
       "description": "메가커피",
-      "createdBy": "Musk"
+      "createdBy": "Musk",
+      "userUuid": "3b241101-e2bb-4255-8caf-4136c566a962"
     },
     {
       "id": "9aba6d72-5ee7-4f02-a4d4-e8bbff9ded4b",
@@ -32,7 +35,8 @@
       "item": "식비",
       "amount": 21000,
       "description": "대광참치",
-      "createdBy": "Rosie"
+      "createdBy": "Rosie",
+      "userUuid": "9b2e49d6-9198-4e97-9d6f-97d4b8f0dce4"
     },
     {
       "id": "b82b213e-8164-4c89-94b0-7246cdcfc4f9",
@@ -41,7 +45,8 @@
       "item": "식비",
       "amount": 412000,
       "description": "BBQ",
-      "createdBy": "Me"
+      "createdBy": "Rosie",
+      "userUuid": "9b2e49d6-9198-4e97-9d6f-97d4b8f0dce4"
     },
     {
       "id": "d180194f-7c27-428a-8cd9-ad9114e58821",
@@ -50,7 +55,8 @@
       "item": "도서",
       "amount": 23000,
       "description": "리액트 마스터",
-      "createdBy": "Me"
+      "createdBy": "Me",
+      "userUuid": "b9b7351d-6f53-47d8-ae75-32c12a0fa0f0"
     },
     {
       "id": "0abf06c3-8f0e-4ea1-9691-7facab0a91cb",
@@ -59,23 +65,8 @@
       "item": "외식",
       "amount": 100000,
       "description": "세광양대창",
-      "createdBy": "Me"
-    },
-    {
-      "id": "91f84656-5fbc-4749-bd54-015b753fe352",
-      "date": "2024-06-12",
-      "item": "간식",
-      "amount": 2000,
-      "description": "아이스크림",
-      "createdBy": "토심이2"
-    },
-    {
-      "id": "17790799-fd6c-45e4-a1ef-ec175736b003",
-      "date": "2024-01-01",
-      "item": "2",
-      "amount": 2,
-      "description": "2",
-      "createdBy": "토심이2"
+      "createdBy": "Me",
+      "userUuid": "b9b7351d-6f53-47d8-ae75-32c12a0fa0f0"
     }
   ]
 }

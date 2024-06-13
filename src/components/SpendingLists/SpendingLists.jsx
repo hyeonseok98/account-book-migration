@@ -9,10 +9,10 @@ export default function SpendingLists() {
   const navigate = useNavigate();
   const selectedMonth = selectedMonthStore((state) => state.selectedMonth);
   const { data: spendingLists, isLoading, isError } = useSpendings();
-  const nickname = userInfoStore((state) => state.userInfo.nickname);
+  const userUuid = userInfoStore((state) => state.userInfo.userUuid);
 
-  const handleMoveDetailPage = (id, createdBy) => {
-    nickname === createdBy
+  const handleMoveDetailPage = (id, userId) => {
+    userUuid === userId
       ? navigate(`/spendings/${id}`)
       : alert("본인의 지출만 수정할 수 있습니다");
   };
@@ -39,16 +39,18 @@ export default function SpendingLists() {
         {monthlySpendingLists.length === 0 ? (
           <NoSpendingDiv>지출이 없습니다.</NoSpendingDiv>
         ) : (
-          monthlySpendingLists.map((itemInfo) => (
-            <li
-              key={itemInfo.id}
-              onClick={() =>
-                handleMoveDetailPage(itemInfo.id, itemInfo.createdBy)
-              }
-            >
-              <SpendingDetail itemInfo={itemInfo} />
-            </li>
-          ))
+          monthlySpendingLists.map((itemInfo) => {
+            return (
+              <li
+                key={itemInfo.id}
+                onClick={() =>
+                  handleMoveDetailPage(itemInfo.id, itemInfo.userUuid)
+                }
+              >
+                <SpendingDetail itemInfo={itemInfo} />
+              </li>
+            );
+          })
         )}
       </ul>
     </Section>

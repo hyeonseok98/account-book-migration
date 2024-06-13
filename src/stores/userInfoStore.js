@@ -7,6 +7,7 @@ const initialUserInfo = {
   nickname: "",
   avatar: "",
   success: false,
+  userUuid: "",
 };
 
 const userInfoStore = create(

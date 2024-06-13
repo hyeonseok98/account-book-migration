@@ -9,18 +9,12 @@ import {
 } from "../../hooks/useSpendings";
 import userInfoStore from "../../stores/userInfoStore";
 
-// const { nickname } = userInfoStore((state) => state.userInfo.nickname);
-// const [userValidation, setUserValidaton] = useState(false)
-
-// useEffect(() => {
-//   if(nickname === createdBy) setUserValidaton(true)
-// },[])
-
 export default function DetailPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { data: spendingLists, isLoading, isError } = useSpendings();
   const nickname = userInfoStore((state) => state.userInfo.nickname);
+  const userUuid = userInfoStore((state) => state.userInfo.userUuid);
 
   const updateSpending = useUpdateSpending();
   const deleteSpending = useDeleteSpending();
@@ -79,6 +73,7 @@ export default function DetailPage() {
         amount,
         description,
         createdBy: nickname,
+        userUuid: userUuid,
       },
     });
 

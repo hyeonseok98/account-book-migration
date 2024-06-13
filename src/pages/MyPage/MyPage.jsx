@@ -33,6 +33,7 @@ function MyPage() {
     }
     const updatedUser = await changeProfile(formData);
 
+    alert("프로필 수정이 완료되었습니다");
     setUserInfo(updatedUser);
     setNewNickname(updatedUser.nickname || "");
     setNickname(updatedUser.nickname || "");

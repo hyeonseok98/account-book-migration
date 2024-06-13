@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import { login } from "../../api/auth.api";
 import { Input } from "../../components/Commons/Input";
 import userInfoStore from "../../stores/userInfoStore";
@@ -16,6 +17,7 @@ function Login() {
     e.preventDefault();
     const id = idRef.current.value.trim();
     const password = passwordRef.current.value.trim();
+    const uniqueId = uuidv4();
 
     if (authValidation(id, password)) {
       const { accessToken, userId, nickname, avatar, success } = await login({
@@ -28,6 +30,7 @@ function Login() {
         nickname: nickname,
         avatar: avatar,
         success: success,
+        userUuid: uniqueId,
       });
 
       alert("로그인 되었습니다");

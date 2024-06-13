@@ -9,6 +9,7 @@ import userInfoStore from "./../../stores/userInfoStore";
 export default function AddSpendings() {
   const addSpending = useCreateSpending();
   const nickname = userInfoStore((state) => state.userInfo.nickname);
+  const userUuid = userInfoStore((state) => state.userInfo.userUuid);
   const selectedMonth = selectedMonthStore((state) => state.selectedMonth);
 
   const paymentDateRef = useRef(null);
@@ -46,6 +47,7 @@ export default function AddSpendings() {
       amount,
       description,
       createdBy: nickname,
+      userUuid: userUuid,
     });
 
     paymentDateRef.current.value =
