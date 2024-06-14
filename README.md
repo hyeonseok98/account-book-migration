@@ -7,9 +7,11 @@
 
 <br />
 
-- **📅 프로젝트 기간: 2024.06.11~13**  
-- 🔗 이전 프로젝트 링크: https://github.com/hyeonseok98/account-book
+## 📅 프로젝트 기간
+- 2024.06.11~13
 
+
+<br />
 <br />
 
 ## 🔎 사용 기술 스택 및 선정 이유
@@ -27,17 +29,19 @@
 ```
 
 <br />
+<br />
 
 ## 📌 기본 기능(이전 프로젝트)
 - 지출 항목에 대한 CRUD 기능 제공
   - 메인 페이지 내 지출 등록 기능(Create)
   - 월별 지출 목록 확인 기능(Read)
   - 작성 항목 수정/삭제 기능(상세 페이지 내 위치, Update/Delete)
-  
 <img src="https://github.com/hyeonseok98/account-book-migration/assets/157561573/b4eaecfd-6c78-42bb-936a-733da7366be4" alt="" width="600" />
 <img src="https://github.com/hyeonseok98/account-book-migration/assets/157561573/6f1c3480-e3a6-4c69-9a00-3b219aaf9d41" alt="" width="600" />
 
+- 🔗 이전 프로젝트 링크: https://github.com/hyeonseok98/account-book
 
+<br />
 <br />
 
 ## 🚀 추가 기능(현재 프로젝트)
