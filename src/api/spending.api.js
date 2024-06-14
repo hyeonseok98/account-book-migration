@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SPENDING_BASE_URL = "http://localhost:5000";
+const SPENDING_BASE_URL = "https://jade-voracious-newsboy.glitch.me";
 
 const spendingClient = axios.create({
   baseURL: SPENDING_BASE_URL,
