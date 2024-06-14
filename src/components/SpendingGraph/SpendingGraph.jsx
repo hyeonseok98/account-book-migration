@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import tosim2 from "../../assets/화이팅 토심이.png";
+import tosim from "../../assets/tosim.png";
 
 export default function SpendingGraph() {
   return (
     <Section>
-      <img src={tosim2} alt="파이팅 토심이" width="120px" height="120px" />
+      <img src={tosim} alt=" " width="120px" height="120px" />
     </Section>
   );
 }

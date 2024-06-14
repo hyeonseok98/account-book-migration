@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { changeProfile, getUserInfos } from "../../api/auth.api";
-import defaultImg from "../../assets/cat-moon.png";
+import defaultImg from "../../assets/cat-logo.png";
 import userInfoStore from "../../stores/userInfoStore";
 
 function MyPage() {

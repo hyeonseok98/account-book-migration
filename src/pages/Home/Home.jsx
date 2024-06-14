@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getUserInfos } from "../../api/auth.api";
 import AddSpendings from "../../components/AddSpendings/AddSpendings";
 import MonthlySpending from "../../components/MonthlySpending/MonthlySpending";
-import SpendingGraph from "../../components/SpendingGraph";
+import SpendingGraph from "../../components/SpendingGraph/SpendingGraph";
 import SpendingLists from "../../components/SpendingLists/SpendingLists";
 import userInfoStore from "../../stores/userInfoStore";
 

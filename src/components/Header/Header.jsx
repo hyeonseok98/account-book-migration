@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import catMoon from "../../assets/cat-moon.png";
+import catMoon from "../../assets/cat-logo.png";
 import userIcon from "../../assets/user-black-24.png";
 import userInfoStore from "../../stores/userInfoStore";
 
