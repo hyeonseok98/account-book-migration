@@ -19,7 +19,6 @@ const GlobalStyles = createGlobalStyle`
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  cursor: default;
   line-height: 1.5;
   overflow-wrap: break-word;
 }
@@ -61,6 +60,7 @@ button {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 table {
